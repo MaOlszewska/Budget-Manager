@@ -1,0 +1,17 @@
+<h1> What do you spend your money {{request.user}} ?</h1>
+<td><a href="{% url 'add-expense'%}">Add expense</a></td>
+<table>
+    {% for expense in expenses %}
+    <tr>
+        <td>{{expense.category}}</td>
+        <td>{{expense.expense}}</td>
+        <td><a href="{% url 'expense' expense.id %}">Detail</a></td>
+        <td><a href="{% url 'update-expense' expense.id %}">Update</a></td>
+        <td><a href="{% url 'delete-expense' expense.id %}">Delete</a></td>
+    </tr>
+    {% empty %}
+    <h3> You have no expenses </h3>
+    {% endfor %}
+</table>
+<a href="{% url 'logout' %}">Logout </a>
+<a href="{% url 'piechart' %}">Show chart</a>

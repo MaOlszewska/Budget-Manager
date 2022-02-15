@@ -1,0 +1,6 @@
+<a href="{% url 'expenses' %}"> Go Back </a>
+<form method="POST">
+    {% csrf_token %}
+    <p> Are you sure you want to delete this information?</p>
+    <input type="submit" value="Delete" />
+</form>
