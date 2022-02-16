@@ -1,9 +1,18 @@
-<h1>Login</h1>
-<form method = "POST">
-    {%  csrf_token %}
-    {{form.as_p}}
-    <input type ="submit" value="Login">
-</form>
-<p>Do not have an account? <a href="{% url 'register' %}">Register</a></p>
+{% extends 'budget_app/main.html' %}
+{% block content %}
+
+<div class="header-bar">
+    <h1>Login</h1>
+</div>
+
+<div class="card-body">
+    <form method = "POST">
+        {%  csrf_token %}
+        {{form.as_p}}
+        <input style="margin-left: 280px; margin-top: 10px; " class="button" type="submit" value="Login">
+    </form>
+    <p>Do not have an account? <a href="{% url 'register' %}">Register</a></p>
+</div>
 
 
+{% endblock content %}

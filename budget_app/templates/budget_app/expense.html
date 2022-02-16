@@ -1,9 +1,14 @@
-<h1>Expense:</h1>
+{% extends 'budget_app/main.html' %}
+{% block content %}
 
-<h2>{{expense.category}}<br>
-{{expense.description}}<br>
-{{expense.date}}<br>
-{{expense.expense}}</h2>
+<div class="header-bar">
+    <a href="{% url 'expenses' %}">&#8592; Back</a>
+</div>
 
-<a href="{% url 'expenses' %}"> Go Back </a>
-
+<div class="card-body">
+    <p style="padding-left: 30px; font-size: 20px">Kategoria: {{expense.category}}</p>
+    <p style="padding-left: 30px; font-size: 20px">Opis: {{expense.description}}</p>
+    <p style="padding-left: 30px; font-size: 20px">Data: {{expense.date}}</p>
+    <p style="padding-left: 30px; font-size: 20px">Wydatek:  {{expense.expense}}</h3>
+</div>
+{% endblock content %}

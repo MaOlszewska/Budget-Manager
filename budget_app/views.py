@@ -73,25 +73,14 @@ class ExpenseDelete(LoginRequiredMixin,DeleteView):
         owner = self.request.user
         return self.model.objects.filter(user=owner)
 
-# def chart(request):
-#     fig = plt.figure()
-#     qs = ExpenseInformation.objects.all()
-#     data = []
-#     print(data)
-#     for items in qs:
-#         data.append(items.expense)
-#     plt.pie(data)
-#     fig.savefig('piechart.png')
-#
+
 from django.shortcuts import render
-import random
-# MatPlotLib
 import matplotlib
 matplotlib.use('Agg')
 from matplotlib import pyplot as plt
-import numpy as np
+
 from django.db.models import Sum
-# Pie Chart
+
 def barchart(request):
     data = []
     labels = []
