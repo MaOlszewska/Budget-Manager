@@ -9,6 +9,14 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.shortcuts import render
+import matplotlib
+matplotlib.use('Agg')
+from matplotlib import pyplot as plt
+from django.db.models import Sum
+import matplotlib
+import matplotlib.pyplot as plt
+
 
 class UserRegister(FormView):
     template_name = 'budget_app/register.html'
@@ -29,9 +37,6 @@ class UserLoginView(LoginView):
 
     def get_success_url(self):
         return reverse_lazy('expenses')
-
-import matplotlib
-import matplotlib.pyplot as plt
 
 class ExpenseList(LoginRequiredMixin, ListView):
     model = ExpenseInformation
@@ -73,14 +78,6 @@ class ExpenseDelete(LoginRequiredMixin,DeleteView):
         owner = self.request.user
         return self.model.objects.filter(user=owner)
 
-
-from django.shortcuts import render
-import matplotlib
-matplotlib.use('Agg')
-from matplotlib import pyplot as plt
-
-from django.db.models import Sum
-
 def barchart(request):
     data = []
     labels = []
@@ -88,17 +85,15 @@ def barchart(request):
 
     for dictionary in dictionaries:
         for value in dictionary.values():
-            if type(value) == float:
+            if type(value) == int:
                 data.append(value)
             else:
                 labels.append(value)
 
     fig = plt.figure()
+    print(data, labels)
     colors = [ 'plum', 'pink', 'purple','m', 'hotpink','orchid','darkorchid','deeppink']
     plt.pie(data, labels = labels,autopct='%1.1f%%',colors=colors)
     plt.savefig('piechart.png')
     return render(request,'budget_app/piechart.html')
 
-
-    #categories= ['Zakupy', 'Kosmetyki', 'Odzież', 'Transport', 'Rozrywka','Edukacja', 'Inne']
-    #suma = sum(qs.filter(user=request.user).values_list('expense', flat=True))

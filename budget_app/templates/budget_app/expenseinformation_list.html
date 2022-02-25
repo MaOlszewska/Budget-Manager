@@ -2,23 +2,25 @@
 {% block content %}
 
 <div class="header-bar">
-    <a style=" margin-left: 580px;" href="{% url 'logout' %}"> Logout </a>
-    <h1> What do you spend your money {{request.user}} ?</h1>
-    <a style="text-decoration: none; color: #fff; margin-left: 50px; font-size: 25px;"href="{% url 'piechart' %}">Show chart</a>
-    <a style="text-decoration: none; color: #fff; margin-left: 50px; font-size: 25px;" href="{% url 'add-expense'%}">Add expense</a>
+    <a style=" margin-left: 650px;" href="{% url 'logout' %}"> Wyloguj się </a>
+    <h1> Gdzie znikają Twoje pieniądze {{request.user}}?</h1>
+    <a href="{% url 'piechart' %}">Pokaż wykres</a>
+    <a style = "padding-left: 20px;" href="{% url 'add-expense'%}">Dodaj nowe wydatki</a>
 </div>
 
-<table>
+<table style="display: table-row; line-height: 2em; font-size: 20px;">
     {% for expense in expenses %}
-    <tr style="padding-left: 20px; font-size: 20px;  display: table-row; line-height: 2em;">
+    <tr >
         <td style="padding-left: 20px; padding-right: 30px">{{expense.category}}</a>
-        <td style="padding-left: 20px; padding-right: 30px">{{expense.expense}}</td>
-        <td style="text-decoration: none;padding-left: 360px; font-size: 32px;"><a href="{% url 'expense' expense.id %}">&#8505</a></td>
-        <td style="text-decoration: none;padding-left: 10px; font-size: 30px;"><a href="{% url 'update-expense' expense.id %}">&#9998</a></td>
-        <td style="text-decoration: none;padding-left: 10px; font-size: 30px;"><a href="{% url 'delete-expense' expense.id %}">&#10005</a></td>
+        <td style="padding-left: 20px; padding-right: 30px">{{expense.expense}}zł</td>
+        <td style="padding-left: 450px;font-size: 30px;"><a style="text-decoration: none;" href="{% url 'expense' expense.id %}">&#8505</a></td>
+        <td style="font-size: 30px;"><a style="text-decoration: none;" href="{% url 'update-expense' expense.id %}">&#9998</a></td>
+        <td style="font-size: 30px;"><a style="text-decoration: none;" href="{% url 'delete-expense' expense.id %}">&#10005</a></td>
+
+
     </tr
     {% empty %}
-    <h3> You have no expenses </h3>
+    <h3 style="text-align:center"> Nie masz żadnych wydatków </h3>
     {% endfor %}
 </table>
 

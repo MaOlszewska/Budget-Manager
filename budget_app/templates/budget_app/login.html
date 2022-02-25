@@ -2,16 +2,21 @@
 {% block content %}
 
 <div class="header-bar">
-    <h1>Login</h1>
+    <h1>Zaloguj się</h1>
 </div>
 
 <div class="card-body">
     <form method = "POST">
         {%  csrf_token %}
-        {{form.as_p}}
-        <input style="margin-left: 280px; margin-top: 10px; " class="button" type="submit" value="Login">
+        <label for="{{ form.username.id_for_label }}">Nazwa użytkownika</label>
+        {{ form.username }}
+
+        <label for="{{ form.password.id_for_label }}">Hasło</label>
+        {{ form.password }}
+
+        <input style=" margin-top: 10px;"  class="button" type="submit" value="Zaloguj">
     </form>
-    <p>Do not have an account? <a href="{% url 'register' %}">Register</a></p>
+    <p> Nie masz jeszcze konta?   <a href="{% url 'register' %}">Zarejestruj się</a></p>
 </div>
 
 

@@ -2,13 +2,15 @@
 {% block content %}
 
 <div class="header-bar">
-    <a href="{% url 'expenses' %}">&#8592; Back</a>
+    <a href="{% url 'expenses' %}">&#8592; Wróć</a>
 </div>
 
 <div class="card-body">
-    <p style="padding-left: 30px; font-size: 20px">Kategoria: {{expense.category}}</p>
-    <p style="padding-left: 30px; font-size: 20px">Opis: {{expense.description}}</p>
-    <p style="padding-left: 30px; font-size: 20px">Data: {{expense.date}}</p>
-    <p style="padding-left: 30px; font-size: 20px">Wydatek:  {{expense.expense}}</h3>
+    <p>Kategoria: {{expense.category}}</p>
+    <p>Opis: {{expense.description}}</p>
+    <p>Data: {{expense.date}}</p>
+    <p>Wydatek:  {{expense.expense}}zł</h3>
 </div>
+
+
 {% endblock content %}

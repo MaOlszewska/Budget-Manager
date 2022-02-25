@@ -2,14 +2,14 @@
 {% block content %}
 
 <div class="header-bar">
-    <a href="{% url 'expenses' %}">&#8592; Go Back</a>
+    <a href="{% url 'expenses' %}">&#8592; Wróć</a>
 </div>
 
 <div class="card-body">
     <form method="POST">
         {% csrf_token %}
-            <p> Are you sure you want to delete this information?</p>
-        <input style="margin-left: 300px;" class="button" type="submit" value="Delete" />
+            <p> Jesteś pewny, że chcesz usunąć informacje?</p>
+        <input class="button" type="submit" value="Usuń" />
     </form>
 </div>
 

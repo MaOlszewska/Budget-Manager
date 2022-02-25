@@ -10,14 +10,15 @@ class ExpenseInformation(models.Model):
         ('Transport', 'Transport'),
         ('Rozrywka', 'Rozrywka'),
         ('Edukacja', 'Edukacja'),
+        ('Zdrowie', 'Zdrowie'),
         ('Inne', 'Inne'),
     )
 
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, null=True, blank=True)
-    category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, default='Inne')
+    category = models.CharField(max_length=11, choices=CATEGORY_CHOICES, default='Inne')
     description = models.TextField(null = True, blank = True)
-    expense = models.FloatField()
+    expense = models.PositiveIntegerField()
     date = models.DateField(auto_now_add=True)
 
     def __str__(self):
